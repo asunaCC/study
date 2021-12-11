@@ -2,18 +2,21 @@
  * @Author: Yran
  * @Date: 2021-11-20 15:34:45
  * @LastEditors: Yran
- * @LastEditTime: 2021-11-20 17:17:39
+ * @LastEditTime: 2021-11-27 11:40:35
 -->
 <template>
   <h1>this is a App component</h1>
   <h2>姓名：{{ name }}</h2>
   <h2>年龄：{{ age }}</h2>
+  <h2 v-show="person.sex">性别：{{ person.sex }}</h2>
   <h2>职业：{{ job.type }}</h2>
   <h2>薪资：{{ job.salary }}</h2>
   <h2>爱好：{{ hobby }}</h2>
   <h2>c：{{ job.a.b.c }}</h2>
   <button @click="sayHello(name, age)">说话</button>
   <button @click="changeInfo">修改人的信息</button>
+  <button @click="addSex">添加一个sex属性</button>
+  <button @click="deleteName">删除一个name属性</button>
 </template>
 
 <script>
@@ -63,6 +66,16 @@ export default {
     });
     let hobby = reactive(["抽烟", "喝酒", "烫头"]);
 
+    let person = reactive({
+      name: "yran",
+      age: "22",
+      job: {
+        type: "web工程师",
+        salart: "2000",
+      },
+      hobby: ["抽烟", "喝酒", "烫头"],
+    });
+
     // methods
     function sayHello() {
       alert(`我叫${name}, 我${age}岁了，你好！`);
@@ -81,6 +94,14 @@ export default {
       console.log({ age });
     }
 
+    function addSex() {
+      person.sex = "男";
+    }
+
+    function deleteName() {
+      delete person.name;
+    }
+
     // vue3中读取vue2的内容，无法读取
     // function getDataFunc2() {
     //   console.log(this.sex);
@@ -90,7 +111,7 @@ export default {
     //   console.log(this.sayWelcom);
     // }
     // 返回对象
-    return { name, age, job, hobby, sayHello, changeInfo };
+    return { name, age, job, hobby, sayHello, changeInfo, deleteName, addSex };
     // 返回渲染函数
     // return () => {
     //   return h("h1", "测试渲染")
