@@ -2,7 +2,7 @@
  * @Author: Yran
  * @Date: 2021-11-20 15:34:45
  * @LastEditors: Yran
- * @LastEditTime: 2022-01-10 10:56:46
+ * @LastEditTime: 2022-01-10 10:54:34
 -->
 <template>
   <h1>this is a App component</h1>
